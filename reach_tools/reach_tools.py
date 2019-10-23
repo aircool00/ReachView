@@ -26,7 +26,7 @@ import subprocess
 
 def getImageVersion():
 
-    image_version_file = "/home/reach/.reach/image_version"
+    image_version_file = "/home/pi/.reach/image_version"
 
     try:
         with open(image_version_file, "r") as f:
@@ -90,7 +90,7 @@ def getNetworkStatus():
 def getAppVersion():
     # Extract git tag as software version
     git_tag_cmd = "git describe --tags"
-    app_version = subprocess.check_output([git_tag_cmd], shell = True, cwd = "/home/reach/ReachView")
+    app_version = subprocess.check_output([git_tag_cmd], shell = True, cwd = "/home/pi/ReachView")
 
     return app_version
 
@@ -106,13 +106,13 @@ def getSystemStatus():
 
 def getAvailableSerialPorts():
 
-    possible_ports_ports_to_use = ["ttyMFD2", "ttyUSB0"]
+    possible_ports_ports_to_use = ["ttyAMA0", "ttyUSB0"]
     serial_ports_to_use = [port for port in possible_ports_ports_to_use if os.path.exists("/dev/" + port)]
 
     return serial_ports_to_use
 
 def getLogsSize():
-    logs_path = "/home/reach/logs/"
+    logs_path = "/home/pi/logs/"
     size_in_bytes = sum(os.path.getsize(logs_path + f) for f in os.listdir(logs_path) if os.path.isfile(logs_path + f))
     return size_in_bytes/(1024*1024)
 

@@ -104,8 +104,8 @@ class Convbin:
 
 
 if __name__ == "__main__":
-    cb = Convbin("/home/reach/RTKLIB")
-    rlog = cb.convertRTKLIBLogToRINEX("/home/reach/logs/rov_201601210734.ubx")
+    cb = Convbin("/home/pi/RTKLIB")
+    rlog = cb.convertRTKLIBLogToRINEX("/home/pi/logs/rov_201601210734.ubx")
     print(rlog)
     # print("base")
     # blog = cb.convertRTKLIBLogToRINEX("/home/egor/RTK/convbin_test/ref_201601080935.rtcm3")

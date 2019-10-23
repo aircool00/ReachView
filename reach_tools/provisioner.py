@@ -122,8 +122,8 @@ def update_bluetooth_service():
     restart_bt_daemon()
 
 def check_RTKLIB_integrity():
-    RTKLIB_path = "/home/reach/RTKLIB/"
-    reachview_binaries_path = "/home/reach/ReachView/rtklib_configs/"
+    RTKLIB_path = "/home/pi/RTKLIB/"
+    reachview_binaries_path = "/home/pi/ReachView/rtklib_configs/"
 
     RTKLIB_binaries = [
         (RTKLIB_path + "app/rtkrcv/gcc/rtkrcv", reachview_binaries_path + "rtkrcv"),

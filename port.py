@@ -36,7 +36,7 @@ def br230400():
 def changeBaudrateTo230400():
     # typical baudrate values
     br = ["4800", "9600", "19200", "38400", "57600", "115200", "230400"]
-    cmd = ["stty", "-F", "/dev/ttyMFD1"]
+    cmd = ["stty", "-F", "/dev/ttyAMA0"]
 
     for rate in br:
         cmd.append(str(rate))

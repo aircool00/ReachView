@@ -268,7 +268,7 @@ def updateReachView():
     rtk.shutdown()
     bluetooth_bridge.stop()
     socketio.server.stop()
-    os.execl("/home/reach/ReachView/update.sh", "", str(os.getpid()))
+    os.execl("/home/pi/ReachView/update.sh", "", str(os.getpid()))
 
 #### Device hardware functions ####
 

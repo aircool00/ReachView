@@ -25,7 +25,7 @@
 
 sleep 1
 
-cd /home/reach/ReachView
+cd /home/pi/ReachView
 git fetch
 
 if [[ $? -eq 0 ]];
@@ -35,14 +35,14 @@ then
     git reset --hard origin/master
 
     echo "Copying default configs to RTKLIB directory"
-    cp /home/reach/ReachView/rtklib_configs/*.conf /home/reach/RTKLIB/app/rtkrcv/
-    cp /home/reach/ReachView/rtklib_configs/*.cmd /home/reach/RTKLIB/app/rtkrcv/
+    cp /home/pi/ReachView/rtklib_configs/*.conf /home/pi/RTKLIB/app/rtkrcv/
+    cp /home/pi/ReachView/rtklib_configs/*.cmd /home/pi/RTKLIB/app/rtkrcv/
 
-    cp /home/reach/ReachView/rtklib_configs/rtkrcv /home/reach/RTKLIB/app/rtkrcv/gcc/
-    cp /home/reach/ReachView/rtklib_configs/str2str /home/reach/RTKLIB/app/str2str/gcc/
-    cp /home/reach/ReachView/rtklib_configs/convbin /home/reach/RTKLIB/app/convbin/gcc/
+    cp /home/pi/ReachView/rtklib_configs/rtkrcv /home/pi/RTKLIB/app/rtkrcv/gcc/
+    cp /home/pi/ReachView/rtklib_configs/str2str /home/pi/RTKLIB/app/str2str/gcc/
+    cp /home/pi/ReachView/rtklib_configs/convbin /home/pi/RTKLIB/app/convbin/gcc/
 fi
 
-/home/reach/ReachView/install_packages.sh
-chown -R reach:users /home/reach
-/home/reach/ReachView/server.py
+/home/pi/ReachView/install_packages.sh
+chown -R reach:users /home/pi
+/home/pi/ReachView/server.py

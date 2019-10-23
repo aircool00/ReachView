@@ -44,13 +44,13 @@ from threading import Semaphore, Thread
 class RTKLIB:
 
     # we will save RTKLIB state here for later loading
-    state_file = "/home/reach/.reach/rtk_state"
+    state_file = "/home/pi/.reach/rtk_state"
     # if the state file is not available, these settings are loaded
     default_state = {
         "base": {
             "base_position": [],
             "gps_cmd_file": "GPS_10Hz.cmd",
-            "input_stream": "serial://ttyMFD1:230400:8:n:1:off#ubx",
+            "input_stream": "serial://ttyAMA0:230400:8:n:1:off#ubx",
             "output_stream": "tcpsvr://:9000#rtcm3",
             "rtcm3_messages": [
                 "1002",
@@ -71,10 +71,10 @@ class RTKLIB:
     def __init__(self, socketio, rtklib_path = None, enable_led = True, log_path = None):
 
         if rtklib_path is None:
-            rtklib_path = "/home/reach/RTKLIB"
+            rtklib_path = "/home/pi/RTKLIB"
 
         if log_path is None:
-            log_path = "/home/reach/logs"
+            log_path = "/home/pi/logs"
 
         # default state for RTKLIB is "rover single"
         self.state = "rover"
@@ -123,7 +123,7 @@ class RTKLIB:
             # wait for gps time
             print("Time is not synced by NTP")
             self.updateLED("orange,off")
-            gps_time.set_gps_time("/dev/ttyMFD1", 230400)
+            gps_time.set_gps_time("/dev/ttyAMA0", 230400)
 
         print("Time is synced by NTP!")
 

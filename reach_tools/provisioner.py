@@ -30,52 +30,52 @@ import reach_tools
 import imp
 import shutil
 
-def install_pip_packages():
+#def install_pip_packages():
+#
+#    packages = [
+#        ("pybluez", "bluetooth")
+#    ]
 
-    packages = [
-        ("pybluez", "bluetooth")
-    ]
+#    for p in packages:
+#        try:
+#            imp.find_module(p[1])
+#        except ImportError:
+#            print("No module " + p[0] + " found...")
+#            #pip.main(["install", p[0]])
 
-    for p in packages:
-        try:
-            imp.find_module(p[1])
-        except ImportError:
-            print("No module " + p[0] + " found...")
-            pip.main(["install", p[0]])
+#def check_opkg_packages(packages):
 
-def check_opkg_packages(packages):
+#    packages_to_check = packages
 
-    packages_to_check = packages
+#    try:
+#        out = subprocess.check_output(["opkg", "list-installed"])
+#    except subprocess.CalledProcessError:
+#        print("Error getting installed opkg packages")
+#        return None
+#    else:
+#        for p in out.split("\n"):
+#            if p:
+#                installed_package_name = p.split()[0]
+#                if installed_package_name in packages_to_check:
+#                    packages_to_check.remove(installed_package_name)
 
-    try:
-        out = subprocess.check_output(["opkg", "list-installed"])
-    except subprocess.CalledProcessError:
-        print("Error getting installed opkg packages")
-        return None
-    else:
-        for p in out.split("\n"):
-            if p:
-                installed_package_name = p.split()[0]
-                if installed_package_name in packages_to_check:
-                    packages_to_check.remove(installed_package_name)
+#        return packages_to_check
 
-        return packages_to_check
+#def install_opkg_packages(packages):
 
-def install_opkg_packages(packages):
+#    packages = check_opkg_packages(packages)
 
-    packages = check_opkg_packages(packages)
-
-    if packages:
-        print("Installing missing packages:")
-        print(packages)
-        try:
-            subprocess.check_output(["opkg", "update"])
-        except subprocess.CalledProcessError:
-            print("No internet connection, so no package installs!")
-            pass
-        else:
-            for p in packages:
-                subprocess.check_output(["opkg", "install", p])
+#    if packages:
+#        print("Installing missing packages:")
+#        print(packages)
+#        try:
+#            subprocess.check_output(["opkg", "update"])
+#        except subprocess.CalledProcessError:
+#            print("No internet connection, so no package installs!")
+#            pass
+#        else:
+#            for p in packages:
+#                subprocess.check_output(["opkg", "install", p])
 
 def restart_bt_daemon():
     reach_tools.run_command_safely(["rfkill", "unblock", "bluetooth"])
@@ -137,9 +137,9 @@ def check_RTKLIB_integrity():
             shutil.copy(b[1], b[0])
 
 def provision_reach():
-    install_pip_packages()
-    packages = ["kernel-module-ftdi-sio"]
-    install_opkg_packages(packages)
+    #install_pip_packages()
+    #packages = ["kernel-module-ftdi-sio"]
+    #install_opkg_packages(packages)
     update_bluetooth_service()
     check_RTKLIB_integrity()
 

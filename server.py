@@ -36,8 +36,8 @@ from RTKLIB import RTKLIB
 from port import changeBaudrateTo230400
 from reach_tools import reach_tools, provisioner
 
-print("Installing all required packages")
-provisioner.provision_reach()
+#print("Installing all required packages")
+#provisioner.provision_reach()
 
 import reach_bluetooth.bluetoothctl
 import reach_bluetooth.tcp_bridge
